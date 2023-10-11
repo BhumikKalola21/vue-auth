@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
+
 const store = new Vuex.Store({
   state: {
     token: null,
@@ -8,9 +9,9 @@ const store = new Vuex.Store({
     user: {},
   },
   getters: {
-    getuser: (state) => state.user,
-    getAuth: (state) => state.auth,
-    gettoken: (state) => state.token,
+    user: (state) => state.user,
+    auth: (state) => state.auth,
+    token: (state) => state.token,
   },
   mutations: {
     SET_TOKEN(state, payload) {
@@ -24,12 +25,12 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    resetState({ commit }) {
+    resetUser({ commit }) {
       commit("SET_TOKEN", null);
       commit("SET_USER", {});
       commit("SET_AUTH", false);
     },
   },
- 
+
 });
 export default store;

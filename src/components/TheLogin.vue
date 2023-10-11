@@ -42,12 +42,11 @@ export default {
   methods: {
     userLogin() {
       axios
-        .post("http://localhost:8000/api/login", this.userData)
+        .post("http://localhost:8000/api/login", this.userData) //you can use alternate API for the authentication purpose
         .then((res) => {
           this.$store.commit("SET_AUTH", true);
           this.$store.commit("SET_TOKEN", res.data.token);
-          let details = res.data.employee;
-          this.$store.commit("SET_USER", details);
+          this.$store.commit("SET_USER", res.data.employee);
           this.$router.push("/dashboard");
         });
     },

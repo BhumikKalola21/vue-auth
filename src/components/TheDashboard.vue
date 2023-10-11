@@ -14,22 +14,15 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   computed: {
-    user() {
-      return this.$store.getters["getuser"];
-    },
-    token() {
-      return this.$store.getters["gettoken"];
-    },
-    location() {
-      return this.$store.getters["getLocation"];
-    },
+    ...mapGetters(["user"]),
   },
   methods: {
     logoutUser() {
+      this.$store.dispatch("resetUser");
       this.$router.push("/");
-      this.$store.dispatch("resetState");
     },
   },
 };
@@ -80,5 +73,3 @@ button.logout-button:hover {
   background-color: #a52a2a;
 }
 </style>
-
-
